@@ -1,6 +1,6 @@
-# terraform-aurora-azure-environment
+# terraform-kubernetes-azure-environment
 
-This module deploys the Aurora environment in Azure.
+This module deploys a PBMM compliant Azure Kubernetes Service environment in Azure.
 
 ## Usage
 
