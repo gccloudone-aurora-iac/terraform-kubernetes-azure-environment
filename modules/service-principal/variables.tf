@@ -44,9 +44,9 @@ variable "notes" {
   default     = null
 }
 
-##################
-### Appication ###
-##################
+###################
+### Application ###
+###################
 
 variable "owners" {
   description = "A set of object IDs of principals that will be granted ownership of the application registration & service principal. Supported object types are users or service principals."
@@ -78,12 +78,12 @@ variable "roles_and_members" {
     description          = optional(string)
     allowed_member_types = optional(list(string), ["User"])
     value                = optional(string)
-    members              = map(string) // key is display name and value should be object ID
+    members              = map(string) # key is display name and value should be object ID
   }))
   default = {}
 }
 
-## Claims ##
+### Claims ###
 
 variable "group_membership_claims" {
   description = "Configures the groups claim issued in a user or OAuth access token that the app expects. Possible values are None, SecurityGroup, DirectoryRole, ApplicationGroup or All."

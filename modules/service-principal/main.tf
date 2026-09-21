@@ -2,6 +2,10 @@
 ### Application ###
 ###################
 
+# Manages an Application Registration within Azure Active Directory.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_registration
+#
 resource "azuread_application_registration" "this" {
   display_name = var.user_defined != null ? "${module.azure_resource_names.service_principal_name}-${var.user_defined}" : module.azure_resource_names.service_principal_name
   description  = var.description
@@ -10,6 +14,10 @@ resource "azuread_application_registration" "this" {
   group_membership_claims = var.group_membership_claims
 }
 
+# Manages the web redirect URIs of the Application Registration.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_redirect_uris
+#
 resource "azuread_application_redirect_uris" "web" {
   count = length(var.web_redirect_uris) > 0 ? 1 : 0
 
@@ -18,6 +26,10 @@ resource "azuread_application_redirect_uris" "web" {
   redirect_uris  = var.web_redirect_uris
 }
 
+# Manages the optional claims issued in the Application Registration's tokens.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_optional_claims
+#
 resource "azuread_application_optional_claims" "this" {
   count = var.optional_claims != null ? 1 : 0
 
@@ -56,8 +68,11 @@ resource "azuread_application_optional_claims" "this" {
 
 ### Password ###
 
-# Manages a rotating time resource, which keeps a rotating UTC timestamp stored in the Terraform state and proposes resource recreation
-# when the locally sourced current time is beyond the rotation time. This rotation only occurs when Terraform is executed.
+# Manages a rotating time resource, which keeps a rotating UTC timestamp stored in the
+# Terraform state and proposes resource recreation when the locally sourced current time
+# is beyond the rotation time. This rotation only occurs when Terraform is executed.
+#
+# https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/rotating
 #
 resource "time_rotating" "application_password" {
   count = var.application_password.rotation_days != null ? 1 : 0
@@ -65,6 +80,10 @@ resource "time_rotating" "application_password" {
   rotation_days = var.application_password.rotation_days
 }
 
+# Manages a password credential of the Application Registration.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_password
+#
 resource "azuread_application_password" "this" {
   count = var.application_password.enable ? 1 : 0
 
@@ -77,10 +96,18 @@ resource "azuread_application_password" "this" {
 
 ### App Roles ###
 
+# Generates a stable role ID for each of the application's app roles.
+#
+# https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/uuid
+#
 resource "random_uuid" "app_roles" {
   for_each = var.roles_and_members
 }
 
+# Manages an app role of the Application Registration.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_app_role
+#
 resource "azuread_application_app_role" "this" {
   for_each = var.roles_and_members
 
@@ -95,12 +122,20 @@ resource "azuread_application_app_role" "this" {
 
 ### API Access ###
 
+# Looks up the service principal of each API the application requests access to.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/data-sources/service_principal
+#
 data "azuread_service_principal" "apis" {
   for_each = var.api_permissions
 
   client_id = each.value.api_client_id
 }
 
+# Manages the API permissions the Application Registration requests.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/application_api_access
+#
 resource "azuread_application_api_access" "this" {
   for_each = var.api_permissions
 
@@ -122,11 +157,19 @@ resource "azuread_application_api_access" "this" {
 ### Service Principal ###
 #########################
 
+# Manages a Service Principal for the Application Registration.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/service_principal
+#
 resource "azuread_service_principal" "this" {
   client_id = azuread_application_registration.this.client_id
   owners    = local.owners
 }
 
+# Assigns a given Principal (User or Group) to an app role of the Service Principal.
+#
+# https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/app_role_assignment
+#
 resource "azuread_app_role_assignment" "this" {
   for_each = local.role_to_member_map
 

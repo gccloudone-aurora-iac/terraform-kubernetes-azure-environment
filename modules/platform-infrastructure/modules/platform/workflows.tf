@@ -1,8 +1,8 @@
-##################
-# Argo Workflows #
-##################
+######################
+### Argo Workflows ###
+######################
 
-# Argo Workflows Storage Account
+# Manages the storage account that holds the Argo Workflows artifact bucket.
 #
 # https://github.com/gccloudone-aurora-iac/terraform-azure-storage-account
 #

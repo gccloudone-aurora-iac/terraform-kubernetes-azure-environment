@@ -10,13 +10,13 @@ module "network" {
   naming_convention         = var.naming_convention
   user_defined              = var.user_defined
 
-  # virtual network
+  # Virtual network
   vnet_address_space      = var.vnet_address_space
   vnet_peers              = var.vnet_peers
   dns_servers             = var.dns_servers
   ddos_protection_plan_id = var.ddos_protection_plan_id
 
-  # subnets
+  # Subnets
   subnets                         = var.subnets
   route_table_next_hop_ip_address = var.route_table_next_hop_ip_address
   extra_route_table_rules         = var.extra_route_table_rules

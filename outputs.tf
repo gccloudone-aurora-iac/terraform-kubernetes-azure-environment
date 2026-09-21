@@ -2,24 +2,27 @@
 ### Resource Group IDs ###
 ##########################
 
-## Network ##
+### Network ###
+
 output "network_resource_group_id" {
   description = "The id of the network resource group created."
   value       = var.vnet_id == null ? module.network[0].resource_group_id : null
 }
 
-## Infrastructure ##
+### Infrastructure ###
+
 output "cluster_resource_group_id" {
   description = "The resource group name that the created AKS cluster is in."
   value       = module.infrastructure.cluster_resource_group_id
 }
 
 output "cluster_node_resource_group_id" {
-  description = "The resource group name that the created AKS cluster is in."
+  description = "The node resource group that the created AKS cluster's nodes are in."
   value       = module.infrastructure.cluster_node_resource_group_id
 }
 
-## Platform Infrastructure ##
+### Platform Infrastructure ###
+
 output "platform_resource_group_id" {
   description = "The name of the platform resource group."
   value       = module.platform_infrastructure.platform_resource_group_name
@@ -64,7 +67,7 @@ output "node_pool_subnet_address_prefixes" {
   value       = { for nodepool_name, nodepool in local.node_pools : nodepool_name => nodepool.vnet_subnet_name != null ? var.vnet_id == null ? module.network[0].vnet_subnets[nodepool.vnet_subnet_name].address_prefixes : null : var.vnet_id == null ? module.network[0].vnet_subnets[nodepool_name].address_prefixes : null }
 }
 
-## Route Server ##
+### Route Server ###
 
 output "route_server_id" {
   description = "The ID of the Route Server."
@@ -101,7 +104,7 @@ output "cluster_name" {
 }
 
 output "cluster_kubelet_identity" {
-  description = "The identity details of the user-assigned managed indeity assigned to the cluster's kublets."
+  description = "The identity details of the user-assigned managed identity assigned to the cluster's kubelets."
   value       = module.infrastructure.cluster_kubelet_identity
 }
 
@@ -134,7 +137,7 @@ output "platform_infrastructure" {
   value       = module.platform_infrastructure
 }
 
-## Identities ##
+### Identities ###
 
 output "velero_identity_id" {
   description = "The Azure resource ID of the velero user-assigned managed identity."
@@ -171,7 +174,7 @@ output "thanos_identity_client_id" {
   value       = module.platform_infrastructure.thanos_identity_client_id
 }
 
-## Storage Accounts ##
+### Storage Accounts ###
 
 output "velero_storage_account_id" {
   description = "The ID of the Velero storage account."
@@ -188,7 +191,7 @@ output "thanos_storage_account_name" {
   value       = module.platform_infrastructure.thanos_storage_account_name
 }
 
-## Containers/Buckets ##
+### Containers/Buckets ###
 
 output "thanos_storage_bucket_name" {
   description = "The name of the container within the Thanos Storage Account that will store Thanos Data."

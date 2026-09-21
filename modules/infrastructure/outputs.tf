@@ -42,11 +42,11 @@ output "cluster_kubeconfig" {
 ### Identities ###
 
 output "cluster_kubelet_identity" {
-  description = "The identity details of the user-assigned managed indeity assigned to the cluster's kublets."
+  description = "The identity details of the user-assigned managed identity assigned to the cluster's kubelets."
   value       = module.cluster.kubernetes_kubelet_identity
 }
 
-// Refer to https://github.com/hashicorp/terraform-provider-azurerm/issues/13362
+# Refer to https://github.com/hashicorp/terraform-provider-azurerm/issues/13362
 output "cluster_identity_object_id" {
   description = "The identity details of the managed identity assigned to the cluster. Note: when configuring the cluster to use a userAssigned identity, the principal_id field is empty."
   value       = module.cluster.kubernetes_identity.0.principal_id

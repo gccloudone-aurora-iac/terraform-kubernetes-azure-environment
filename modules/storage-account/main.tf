@@ -1,3 +1,7 @@
+# Manages an Azure Storage Account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account
+#
 resource "azurerm_storage_account" "this" {
   name                = module.storage_account_name.storage_account_name
   resource_group_name = var.resource_group_name
@@ -29,10 +33,14 @@ resource "azurerm_storage_account" "this" {
   tags = local.tags
 }
 
-##############
-## Security ##
-##############
+################
+### Security ###
+################
 
+# Manages Advanced Threat Protection on the storage account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/advanced_threat_protection
+#
 resource "azurerm_advanced_threat_protection" "this" {
   count = var.enable_advanced_threat_protection == true ? 1 : 0
 
@@ -40,6 +48,10 @@ resource "azurerm_advanced_threat_protection" "this" {
   enabled            = true
 }
 
+# Manages the customer managed key used to encrypt the storage account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_customer_managed_key
+#
 resource "azurerm_storage_account_customer_managed_key" "this" {
   count = var.customer_managed_key != null ? 1 : 0
 
@@ -48,10 +60,14 @@ resource "azurerm_storage_account_customer_managed_key" "this" {
   key_name           = var.customer_managed_key.key_name
 }
 
-#############
-## Content ##
-#############
+###############
+### Content ###
+###############
 
+# Manages a container within the storage account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_container
+#
 resource "azurerm_storage_container" "this" {
   for_each = toset(var.containers)
 

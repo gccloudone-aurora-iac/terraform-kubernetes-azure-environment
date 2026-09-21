@@ -1,6 +1,6 @@
 locals {
 
-  // All var.subnets elements that have create_nsg = true
+  # All var.subnets elements that have create_nsg = true
   nsg_security_rules = {
     for subnet_name, value in var.subnets :
     subnet_name => {
@@ -8,7 +8,7 @@ locals {
     } if value.create_nsg != false
   }
 
-  // The subnets to create in the vnet with the NSG & Route Tables assoications created within the module
+  # The subnets to create in the vnet with the NSG & Route Table associations created within the module
   subnets = [
     for subnet_name, value in var.subnets :
     {
@@ -24,7 +24,7 @@ locals {
     }
   ]
 
-  // A list of subnets and their corresponding NSG to associate to them
+  # A list of subnets and their corresponding NSG to associate to them
   subnet_nsgs = [
     for subnet_name, value in var.subnets :
     {
@@ -33,7 +33,7 @@ locals {
     } if value.create_nsg
   ]
 
-  // A list of subnets and their corresponding route tables to associate to them
+  # A list of subnets and their corresponding route tables to associate to them
   subnet_route_tables = [
     for subnet_name, value in var.subnets :
     {

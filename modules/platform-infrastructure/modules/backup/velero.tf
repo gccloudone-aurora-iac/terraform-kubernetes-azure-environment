@@ -1,7 +1,11 @@
-############
-## VELERO ##
-############
+##############
+### Velero ###
+##############
 
+# Manages the storage account that holds the Velero backup bucket.
+#
+# https://github.com/gccloudone-aurora-iac/terraform-azure-storage-account
+#
 module "velero_storage_account" {
   source = "../../../storage-account"
 
@@ -41,7 +45,7 @@ resource "azurerm_user_assigned_identity" "velero" {
   tags                = var.tags
 }
 
-# Creates a Federate Identity Credential
+# Creates a Federate Identity Credential.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/federated_identity_credential
 #

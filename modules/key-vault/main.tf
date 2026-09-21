@@ -1,7 +1,11 @@
-###############
-## Key Vault ##
-###############
+#################
+### Key Vault ###
+#################
 
+# Manages an Azure Key Vault.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/key_vault
+#
 resource "azurerm_key_vault" "this" {
   name                = module.key_vault_name.key_vault_name
   resource_group_name = var.resource_group_name
@@ -32,6 +36,10 @@ resource "azurerm_key_vault" "this" {
 ### Private Endpoints ###
 #########################
 
+# Manages the private endpoint(s) of the key vault.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_endpoint
+#
 resource "azurerm_private_endpoint" "this" {
   for_each = { for index, endpoint in var.private_endpoints : index => endpoint }
 

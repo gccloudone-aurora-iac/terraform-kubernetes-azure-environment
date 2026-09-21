@@ -35,7 +35,7 @@ resource "azurerm_route_server" "this" {
   tags = local.tags
 }
 
-# Adds peer(s) to the Route Server.
+# Manages the BGP peer(s) of the Route Server.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_server_bgp_connection
 #

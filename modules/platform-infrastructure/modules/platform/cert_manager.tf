@@ -30,7 +30,7 @@ resource "azurerm_role_assignment" "aad_pod_identity_cert_manager_operator" {
   principal_id         = var.cluster_identity_object_id
 }
 
-# Creates a Federate Identity Credential
+# Creates a Federate Identity Credential.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/federated_identity_credential
 #

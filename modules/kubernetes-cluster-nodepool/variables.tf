@@ -172,7 +172,7 @@ variable "upgrade_settings" {
   type = object({
     drain_timeout_in_minutes      = optional(number, 30)
     node_soak_duration_in_minutes = optional(number, 0)
-    max_surge                     = optional(string, "33%") // "The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade."
+    max_surge                     = optional(string, "33%") # "The maximum number or percentage of nodes which will be added to the Node Pool size during an upgrade."
   })
   default = {
     drain_timeout_in_minutes      = 30

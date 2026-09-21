@@ -43,7 +43,11 @@ resource "azurerm_user_assigned_identity" "aks_kubelet" {
 ### RBAC ###
 ############
 
-# Allow the cluster identity to create & delete an A record in the Private DNS Zone used.
+# Assigns the cluster identity the role that lets it create and delete an A record
+# in the Private DNS Zone used.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment
+#
 resource "azurerm_role_assignment" "aks_msi_dns_zone" {
   count                = var.create_private_dns_zone_role && var.networking_ids.dns_zones.azmk8s != null ? 1 : 0
   role_definition_name = "Private DNS Zone Contributor"
@@ -51,14 +55,21 @@ resource "azurerm_role_assignment" "aks_msi_dns_zone" {
   scope                = var.networking_ids.dns_zones.azmk8s
 }
 
-# Required for the BYO CNI as indicated by https://learn.microsoft.com/en-us/azure/aks/use-byo-cni?tabs=azure-cli
+# Assigns the AKS MSI the role over the cluster VNet that the BYO CNI requires.
+#
+# https://learn.microsoft.com/en-us/azure/aks/use-byo-cni?tabs=azure-cli
+#
 resource "azurerm_role_assignment" "aks_msi_vnet" {
   role_definition_name = "Network Contributor"
   principal_id         = azurerm_user_assigned_identity.aks.principal_id
   scope                = var.cluster_vnet_id
 }
 
-# Grant the AKS MSI the ability to read and assign User Assigned Managed Identity for the kubelet MSI.
+# Assigns the AKS MSI the role that lets it read and assign the kubelet's User Assigned
+# Managed Identity.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment
+#
 resource "azurerm_role_assignment" "aks_msi_kubelet_operator" {
   role_definition_name = "Managed Identity Operator"
   principal_id         = azurerm_user_assigned_identity.aks.principal_id

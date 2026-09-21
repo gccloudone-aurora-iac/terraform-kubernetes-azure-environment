@@ -1,4 +1,4 @@
-// The unique security rules for each of the default AKS node pool NSGs
+# The unique security rules for each of the default AKS node pool NSGs
 locals {
   default_node_pool_unique_nsg_rules = {
     gateway = {
@@ -96,7 +96,7 @@ locals {
   }
 }
 
-// The final NSG security rules used by each of the default NSGs
+# The final NSG security rules used by each of the default NSGs
 locals {
   default_nsg_rules = {
     loadbalancer = [

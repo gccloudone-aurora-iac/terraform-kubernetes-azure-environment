@@ -6,7 +6,7 @@ locals {
   vnet_peers = [
     for vnet_resource_id in var.vnet_peers : {
       virtual_network_id   = vnet_resource_id
-      virtual_network_name = element(split("/", vnet_resource_id), length(split("/", vnet_resource_id)) - 1) // The last index by splitting the resource ID by /
+      virtual_network_name = element(split("/", vnet_resource_id), length(split("/", vnet_resource_id)) - 1) # The last index by splitting the resource ID by /
       resource_group_name  = element(split("/", vnet_resource_id), 4)
     }
   ]

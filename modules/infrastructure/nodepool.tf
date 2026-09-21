@@ -2,7 +2,7 @@
 ### Kubernetes Nodepool Module ###
 ##################################
 
-# Manages a Node Pool within a Kubernetes Cluster
+# Manages a Node Pool within a Kubernetes Cluster.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster_node_pool
 #

@@ -1,9 +1,11 @@
-############
-## THANOS ##
-############
+##############
+### Thanos ###
+##############
 
-
-# Create a storage account
+# Manages the storage account that holds the Thanos metrics bucket.
+#
+# https://github.com/gccloudone-aurora-iac/terraform-azure-storage-account
+#
 module "thanos_storage_account" {
   source = "../../../storage-account"
 
@@ -27,18 +29,21 @@ module "thanos_storage_account" {
   tags                     = var.tags
 }
 
-# Creates a user assigned identity (managed identity)
-# UAMI - Thanos Side Car Authenticates Using This
+# Manages a User Assigned Identity that the Thanos sidecar authenticates as.
+#
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/user_assigned_identity
+#
 resource "azurerm_user_assigned_identity" "thanos-id" {
   location            = azurerm_resource_group.platform.location
   name                = "${module.azure_resource_names.managed_identity_name}-thanos"
   resource_group_name = azurerm_resource_group.platform.name
 }
 
-# Create a trust and binds to the above UAMI to allow service account k8 tokens to use this identity
-# Match on subject is required
+# Creates a Federate Identity Credential that lets the Prometheus service account
+# token act as the Thanos identity. The subject must match exactly.
+#
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/federated_identity_credential
+#
 resource "azurerm_federated_identity_credential" "thanos-fed-id" {
   name                = "${module.azure_resource_names.managed_identity_name}-fed-thanos"
   audience            = ["api://AzureADTokenExchange"]
@@ -48,9 +53,10 @@ resource "azurerm_federated_identity_credential" "thanos-fed-id" {
   resource_group_name = azurerm_resource_group.platform.name
 }
 
-# Role authorization
+# Assigns a given Principal (User or Group) to a given Role.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/role_assignment
+#
 resource "azurerm_role_assignment" "thanos_blob" {
   scope                = module.thanos_storage_account.id
   role_definition_name = "Storage Blob Data Contributor"
@@ -58,11 +64,11 @@ resource "azurerm_role_assignment" "thanos_blob" {
 }
 
 
-# Thanos Compactor and Store-Gateway federated ID
-
-# Create a trust and binds to the above UAMI to federate for the thanos compactor
-# Match on subject is required
+# Creates a Federate Identity Credential that federates the Thanos compactor's
+# service account to the Thanos identity. The subject must match exactly.
+#
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/federated_identity_credential
+#
 resource "azurerm_federated_identity_credential" "thanos-compactor-fed-id" {
   name                = "${module.azure_resource_names.managed_identity_name}-fed-thanos-compactor"
   audience            = ["api://AzureADTokenExchange"]
@@ -73,9 +79,11 @@ resource "azurerm_federated_identity_credential" "thanos-compactor-fed-id" {
 }
 
 
-# Create a trust and binds to the above UAMI to federate for the thanos store gateway
-# Match on subject is required
+# Creates a Federate Identity Credential that federates the Thanos store gateway's
+# service account to the Thanos identity. The subject must match exactly.
+#
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/federated_identity_credential
+#
 resource "azurerm_federated_identity_credential" "thanos-storegateway-fed-id" {
   name                = "${module.azure_resource_names.managed_identity_name}-fed-thanos-storegateway"
   audience            = ["api://AzureADTokenExchange"]

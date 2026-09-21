@@ -375,7 +375,7 @@ variable "auto_scaler_profile" {
 
     scale_down_utilization_threshold = optional(number, 0.5)
     scale_down_delay_after_add       = optional(string, "10m")
-    scale_down_delay_after_delete    = optional(string) // defaults to scan_interval
+    scale_down_delay_after_delete    = optional(string) # defaults to scan_interval
     scale_down_delay_after_failure   = optional(string, "3m")
     scale_down_unneeded              = optional(string, "10m")
     scale_down_unready               = optional(string, "20m")

@@ -1,6 +1,6 @@
-# Creates the backup-rg Azure resource group and the nessessary platform components within it.
+# Creates the backup resource group and the necessary platform components within it.
 #
-# ./modules/backup-rg
+# ./modules/backup
 #
 module "backup_rg" {
   source = "./modules/backup"
@@ -21,9 +21,9 @@ module "backup_rg" {
   tags = local.tags
 }
 
-# Creates the platform-rg Azure resource group and the necessary platform components within it.
+# Creates the platform resource group and the necessary platform components within it.
 #
-# ./modules/platform-rg
+# ./modules/platform
 #
 module "platform_rg" {
   source = "./modules/platform"
@@ -36,7 +36,7 @@ module "platform_rg" {
   dns_zone_ids               = var.networking_ids.dns_zones
   infrastructure_subnet_id   = var.networking_ids.subnets.infrastructure
 
-  # platform resources
+  # Platform resources
   bill_of_landing_managed_identity_id = var.bill_of_landing_managed_identity_id
 
   oidc_issuer_url = var.oidc_issuer_url

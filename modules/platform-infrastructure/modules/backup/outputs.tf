@@ -1,6 +1,6 @@
-#######################
+######################
 ### Resource Group ###
-#######################
+######################
 
 output "backup_resource_group_id" {
   description = "The ID of the platform resource group."

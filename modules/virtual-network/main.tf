@@ -38,7 +38,7 @@ resource "azurerm_virtual_network_peering" "origin_to_remote" {
   virtual_network_name      = azurerm_virtual_network.this.name
   remote_virtual_network_id = each.value.virtual_network_id
 
-  // These dependencies aim to fix the issue recorded in https://github.com/hashicorp/terraform-provider-azurerm/issues/2605
+  # These dependencies aim to fix the issue recorded in https://github.com/hashicorp/terraform-provider-azurerm/issues/2605
   depends_on = [
     azurerm_subnet.this,
     azurerm_subnet_network_security_group_association.this,

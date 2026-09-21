@@ -90,9 +90,9 @@ Examples for this module along with various configurations can be found in the [
 | <a name="output_cluster_id"></a> [cluster\_id](#output\_cluster\_id) | The id of the public IP used by the route server |
 | <a name="output_cluster_identity_object_id"></a> [cluster\_identity\_object\_id](#output\_cluster\_identity\_object\_id) | The identity details of the managed identity assigned to the cluster. |
 | <a name="output_cluster_kubeconfig"></a> [cluster\_kubeconfig](#output\_cluster\_kubeconfig) | A Terraform object that contains kubeconfig info. |
-| <a name="output_cluster_kubelet_identity"></a> [cluster\_kubelet\_identity](#output\_cluster\_kubelet\_identity) | The identity details of the user-assigned managed indeity assigned to the cluster's kublets. |
+| <a name="output_cluster_kubelet_identity"></a> [cluster\_kubelet\_identity](#output\_cluster\_kubelet\_identity) | The identity details of the user-assigned managed identity assigned to the cluster's kubelets. |
 | <a name="output_cluster_name"></a> [cluster\_name](#output\_cluster\_name) | The name of the AKS cluster. |
-| <a name="output_cluster_node_resource_group_id"></a> [cluster\_node\_resource\_group\_id](#output\_cluster\_node\_resource\_group\_id) | The resource group name that the created AKS cluster is in. |
+| <a name="output_cluster_node_resource_group_id"></a> [cluster\_node\_resource\_group\_id](#output\_cluster\_node\_resource\_group\_id) | The node resource group that the created AKS cluster's nodes are in. |
 | <a name="output_cluster_resource_group_id"></a> [cluster\_resource\_group\_id](#output\_cluster\_resource\_group\_id) | The resource group name that the created AKS cluster is in. |
 | <a name="output_disk_encryption_key_vault_id"></a> [disk\_encryption\_key\_vault\_id](#output\_disk\_encryption\_key\_vault\_id) | The Azure resource ID of the Key Vault used to store the customer managed encryption key for the AKS cluster. |
 | <a name="output_grafana_sso_sp"></a> [grafana\_sso\_sp](#output\_grafana\_sso\_sp) | Azure service principal used for SSO when logging into Grafana. |
@@ -144,5 +144,5 @@ Examples for this module along with various configurations can be found in the [
 | 2026-06-25 | v4.1.1  | Support for cluster_admins_owners                                                             |
 | 2026-07-07 | v4.2.0  | Federated identity credential setup for thanos store and compactor in downstream module       |
 | 2026-07-08 | v4.2.1  | deny network access to SAs by default when no rules match                                     |
-| 2026-09-21 | v4.3.0  | Vendor downstream modules into `modules/`; resource-names modules stay remote                 |
+| 2026-09-21 | v4.3.0  | Vendor downstream modules into `modules/`; normalize comment style across all `.tf` files     |
 

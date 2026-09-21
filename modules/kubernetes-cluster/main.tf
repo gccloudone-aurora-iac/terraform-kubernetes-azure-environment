@@ -1,4 +1,4 @@
-# Generate a unique Linux username
+# Generates a unique Linux username.
 #
 # https://registry.terraform.io/providers/ContentSquare/random/latest/docs/resources/pet
 #
@@ -6,7 +6,7 @@ resource "random_pet" "linux_username" {
   length = 2
 }
 
-# Generate an SSH key pair for the AKS cluster's Linux Profile
+# Generates an SSH key pair for the AKS cluster's Linux profile.
 #
 # https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key
 #
@@ -17,7 +17,7 @@ resource "tls_private_key" "ssh" {
   rsa_bits  = 4096
 }
 
-# Generate a unique Windows username
+# Generates a unique Windows username.
 #
 # https://registry.terraform.io/providers/ContentSquare/random/latest/docs/resources/pet
 #
@@ -25,7 +25,7 @@ resource "random_pet" "windows_username" {
   length = 2
 }
 
-# Generate a unique Windows password
+# Generates a unique Windows password.
 #
 # https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password
 #
@@ -38,7 +38,7 @@ resource "random_password" "windows_password" {
   min_special = 1
 }
 
-# Manages a Managed Kubernetes Cluster
+# Manages a Managed Kubernetes Cluster.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster
 #
@@ -108,8 +108,7 @@ resource "azurerm_kubernetes_cluster" "this" {
     network_mode       = var.network_mode
     network_data_plane = var.network_data_plane
 
-    # Require the use of UserDefinedRouting
-    # if want to force the use of a firewall device
+    # Require the use of UserDefinedRouting to force traffic through a firewall device.
     outbound_type = var.outbound_type
 
     # Advanced Networking
@@ -283,6 +282,10 @@ resource "azurerm_kubernetes_cluster" "this" {
   tags = local.tags
 }
 
+# Manages the Monitor Diagnostic Settings of the cluster.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting
+#
 resource "azurerm_monitor_diagnostic_setting" "this" {
   for_each = coalesce(var.diag_setting, {})
 

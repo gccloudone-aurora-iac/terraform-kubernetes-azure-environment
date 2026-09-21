@@ -44,6 +44,11 @@ module "cluster_key_vault" {
   tags = local.tags
 }
 
+# Pins the base timestamp that the Key Vault key's expiry date is offset from, so the
+# expiry does not drift on every apply.
+#
+# https://registry.terraform.io/providers/hashicorp/time/latest/docs/resources/static
+#
 resource "time_static" "kv_key_expiry_base" {}
 
 # Manages a Key Vault Key.
@@ -78,7 +83,7 @@ resource "azurerm_key_vault_key" "disk_encryption" {
   ]
 }
 
-#  Manages a Disk Encryption Set
+# Manages a Disk Encryption Set.
 #
 # https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/disk_encryption_set
 #
@@ -99,7 +104,7 @@ resource "azurerm_disk_encryption_set" "disk_encryption" {
 ### RBAC & Access Policy ###
 ############################
 
-# Allow the runner to manage the key vault keys
+# Assigns the pipeline runner the role that lets it manage the Key Vault keys.
 resource "azurerm_role_assignment" "runner_manage_keys" {
   for_each             = toset(local.spn_object_ids)
   scope                = module.cluster_key_vault.id
@@ -107,14 +112,14 @@ resource "azurerm_role_assignment" "runner_manage_keys" {
   principal_id         = each.value
 }
 
-# Allow the disk encryption set to access to the Key Vault key
+# Assigns the disk encryption set the role that lets it read the Key Vault key.
 resource "azurerm_role_assignment" "disk_encryption" {
   scope                = module.cluster_key_vault.id
   role_definition_name = "Key Vault Crypto Service Encryption User"
   principal_id         = azurerm_disk_encryption_set.disk_encryption.identity.0.principal_id
 }
 
-# Allow the cluster identity to read the encryption set
+# Assigns the cluster identity the role that lets it read the disk encryption set.
 resource "azurerm_role_assignment" "cluster_read_disk_encryption" {
   scope                = azurerm_disk_encryption_set.disk_encryption.id
   role_definition_name = "Reader"

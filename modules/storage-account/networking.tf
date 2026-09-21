@@ -1,3 +1,7 @@
+# Manages the network rules that restrict access to the storage account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/storage_account_network_rules
+#
 resource "azurerm_storage_account_network_rules" "this" {
   storage_account_id = azurerm_storage_account.this.id
 
@@ -7,7 +11,10 @@ resource "azurerm_storage_account_network_rules" "this" {
   bypass                     = ["Logging", "Metrics", "AzureServices"]
 }
 
-# name: 2-64 characters
+# Manages the private endpoint(s) of the storage account.
+#
+# https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/private_endpoint
+#
 resource "azurerm_private_endpoint" "this" {
   for_each = { for index, endpoint in var.private_endpoints : index => endpoint }
 
