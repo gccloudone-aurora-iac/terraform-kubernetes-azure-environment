@@ -41,6 +41,8 @@ module "platform_infrastructure" {
 
   create_custom_role_assignment = var.create_custom_role_assignment
 
+  velero_account_replication_type = var.velero_account_replication_type
+
   bill_of_landing_managed_identity_id = var.azure_resource_attributes.project == "mgmt" ? local.bill_of_landing_managed_identity_id : null
 
   tags = local.tags

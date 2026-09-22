@@ -111,6 +111,21 @@ variable "oidc_issuer_url" {
   type        = string
 }
 
+#######################
+### Backup / Velero ###
+#######################
+
+variable "velero_account_replication_type" {
+  description = "Replication type of the Velero backup storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS"
+  type        = string
+  default     = "LRS"
+
+  validation {
+    condition     = contains(["LRS", "GRS", "RAGRS", "ZRS", "GZRS", "RAGZRS"], var.velero_account_replication_type)
+    error_message = "The velero_account_replication_type must be one of: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS."
+  }
+}
+
 ####################
 ### Custom Roles ###
 ####################
