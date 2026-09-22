@@ -19,7 +19,7 @@ Examples for this module along with various configurations can be found in the [
 
 | Name | Version |
 |------|---------|
-| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | 3.3.0 |
+| <a name="provider_azuread"></a> [azuread](#provider\_azuread) | ~> 3.3.0 |
 
 ## Modules
 
