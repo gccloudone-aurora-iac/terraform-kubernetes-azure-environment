@@ -15,7 +15,7 @@ locals {
     var.tags,
     {
       ModuleName    = "terraform-azure-virtual-network",
-      ModuleVersion = "v1.0.0",
+      ModuleVersion = "v5.0.0",
     }
   )
 }

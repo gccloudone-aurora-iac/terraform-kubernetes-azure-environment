@@ -2,8 +2,8 @@ locals {
   tags = merge(
     var.tags,
     {
-      ModuleName    = "terraform-aurora-azure-environment-infrastructure",
-      ModuleVersion = "v1.0.0",
+      ModuleName    = "terraform-kubernetes-azure-environment-infrastructure",
+      ModuleVersion = "v5.0.0",
     }
   )
 

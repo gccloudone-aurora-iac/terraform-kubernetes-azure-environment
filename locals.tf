@@ -8,5 +8,5 @@ locals {
     nodepool_name => nodepool.vnet_subnet_name != null ? merge({ vnet_subnet_id = var.vnet_id == null ? module.network[0].vnet_subnets_name_id[nodepool.vnet_subnet_name] : var.subnet_ids[nodepool.vnet_subnet_name] }, nodepool) : merge({ vnet_subnet_id = var.vnet_id == null ? module.network[0].vnet_subnets_name_id[nodepool_name] : var.subnet_ids[nodepool_name] }, nodepool)
   }
 
-  tags = merge(var.tags, { ModuleName = "terraform-aurora-azure-environment" }, { ModuleVersion = "v1.0.0" })
+  tags = merge(var.tags, { ModuleName = "terraform-kubernetes-azure-environment" }, { ModuleVersion = "v5.0.0" })
 }

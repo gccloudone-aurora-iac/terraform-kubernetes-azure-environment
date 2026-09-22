@@ -4,7 +4,7 @@ locals {
 
 # Deploys Azure resources for the in-cluster platform components.
 #
-# https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-environment-platform-infrastructure
+# ./modules/platform-infrastructure
 #
 module "platform_infrastructure" {
   source = "./modules/platform-infrastructure"

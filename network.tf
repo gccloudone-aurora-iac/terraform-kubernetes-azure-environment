@@ -1,6 +1,6 @@
 # Manages the Cloud Native Platform network resources.
 #
-# https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-environment-network
+# ./modules/network
 #
 module "network" {
   source = "./modules/network"

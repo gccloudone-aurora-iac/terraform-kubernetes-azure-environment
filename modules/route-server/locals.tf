@@ -3,7 +3,7 @@ locals {
     var.tags,
     {
       ModuleName    = "terraform-azure-route-server",
-      ModuleVersion = "v1.0.0",
+      ModuleVersion = "v5.0.0",
     }
   )
 }

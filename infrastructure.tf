@@ -30,7 +30,7 @@ resource "azuread_group" "cluster_admins" {
 
 # Deploys Azure Kubernetes Service and its related infrastructure.
 #
-# https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-environment-infrastructure
+# ./modules/infrastructure
 #
 module "infrastructure" {
   source = "./modules/infrastructure"

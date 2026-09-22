@@ -3,7 +3,7 @@ locals {
     var.tags,
     {
       ModuleName    = "terraform-azure-key-vault",
-      ModuleVersion = "v1.0.0",
+      ModuleVersion = "v5.0.0",
     }
   )
 }
