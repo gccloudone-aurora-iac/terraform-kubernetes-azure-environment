@@ -1,5 +1,5 @@
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -12,7 +12,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -33,13 +33,13 @@ variable "naming_convention" {
 }
 
 variable "description" {
-  description = "The user-defined segment that describes the purpose of the service principal."
+  description = "The description shown to end users on the application registration."
   type        = string
   default     = null
 }
 
 variable "notes" {
-  description = "The user-defined segment that describes the purpose of the service principal."
+  description = "Internal notes on the application registration, visible only to administrators."
   type        = string
   default     = null
 }
@@ -73,7 +73,7 @@ variable "application_password" {
 }
 
 variable "roles_and_members" {
-  description = ""
+  description = "The app roles to create on the application registration, and the members assigned to each."
   type = map(object({
     description          = optional(string)
     allowed_member_types = optional(list(string), ["User"])
@@ -92,7 +92,7 @@ variable "group_membership_claims" {
 }
 
 variable "optional_claims" {
-  description = "Claims are pieces of information about a user, such as their username, email, or group membership, which are included in the security token issued by the identity provider after successful authentication."
+  description = "The optional claims to add to the tokens issued for this application."
   type = object({
     access_tokens = list(object({
       name                  = string

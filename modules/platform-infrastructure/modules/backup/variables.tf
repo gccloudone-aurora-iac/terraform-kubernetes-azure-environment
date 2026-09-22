@@ -1,5 +1,5 @@
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -12,7 +12,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -34,7 +34,7 @@ variable "naming_convention" {
 
 variable "tags" {
   type        = map(string)
-  description = "Tags attached to Azure resource"
+  description = "The tags to assign to the Azure resources"
   default     = {}
 }
 
@@ -76,7 +76,7 @@ variable "oidc_issuer_url" {
 ####################
 
 variable "create_custom_role_assignment" {
-  description = "Set to true to create the custom role assignments."
+  description = "Create the Velero role assignments. The custom roles must already exist in Azure."
   type        = bool
   default     = true
 }

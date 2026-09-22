@@ -3,7 +3,7 @@
 ######################
 
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -16,7 +16,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -43,7 +43,7 @@ variable "service_principal_owners" {
 }
 
 variable "tags" {
-  description = "Azure tags to assign to the Azure resources"
+  description = "The tags to assign to the Azure resources"
   type        = map(string)
   default     = {}
 }
@@ -53,7 +53,8 @@ variable "tags" {
 ##########################
 
 variable "spn_object_ids" {
-  type = list(string)
+  description = "The object IDs granted access to the created Azure resources. Defaults to the caller's own object ID when empty."
+  type        = list(string)
 }
 
 variable "ingress_host" {
@@ -89,7 +90,7 @@ variable "data_sources" {
 }
 
 variable "create_private_dns_zone_role" {
-  description = "Set to true to create the private dns zone role."
+  description = "Grant the cluster identity the Private DNS Zone Contributor role on the AKS private DNS zone."
   type        = bool
   default     = true
 }
@@ -99,7 +100,7 @@ variable "create_private_dns_zone_role" {
 #######################
 
 variable "vnet_id" {
-  description = "The id of the virtual network."
+  description = "The ID of an existing virtual network to deploy into. If null, the module creates one; if set, var.subnet_ids is required."
   type        = string
   default     = null
 }
@@ -126,20 +127,20 @@ variable "vnet_peers" {
 }
 
 variable "dns_servers" {
-  description = "The DNS servers to be used with VNet. If no values specified, this defaults to Azure DNS."
+  description = "The DNS servers to be used by the virtual network. Set to [] to use Azure DNS."
   type        = list(string)
   default     = ["172.20.48.4", "172.20.48.5"]
 }
 
 variable "ddos_protection_plan_id" {
-  description = "The DDoS protection plan resoruce id"
+  description = "The DDoS protection plan resource ID"
   type        = string
   default     = null
 }
 
 
 variable "subnet_ids" {
-  description = "The subnet ids for the virtual network."
+  description = "The subnet IDs within var.vnet_id, keyed by subnet name. Required when var.vnet_id is set."
   type        = map(string)
   default     = null
 }
@@ -238,7 +239,7 @@ variable "route_server_bgp_peers" {
 ###########
 
 variable "network_plugin" {
-  description = "AKS network plugin"
+  description = "AKS network plugin. Accepted values: azure, none"
   type        = string
   default     = "azure"
 
@@ -251,7 +252,7 @@ variable "network_plugin" {
 }
 
 variable "network_mode" {
-  description = "AKS network mode"
+  description = "AKS network mode. Accepted values: bridge, transparent, null"
   type        = string
   default     = "transparent"
   nullable    = true
@@ -267,7 +268,7 @@ variable "network_mode" {
 }
 
 variable "network_policy" {
-  description = "AKS network policy"
+  description = "AKS network policy. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -283,7 +284,7 @@ variable "network_policy" {
 }
 
 variable "network_data_plane" {
-  description = "AKS network data plane"
+  description = "AKS network data plane. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -308,12 +309,12 @@ variable "kubernetes_version" {
 }
 
 variable "cluster_sku_tier" {
-  description = "The SKU of the AKS cluster."
+  description = "The SKU tier of the AKS cluster, which sets its uptime SLA. Accepted values: Free, Standard, Premium"
   type        = string
 }
 
 variable "cluster_support_plan" {
-  description = "The support plan used for the AKS cluster."
+  description = "The support plan for the AKS cluster. Accepted values: KubernetesOfficial, AKSLongTermSupport"
   type        = string
 }
 
@@ -324,13 +325,13 @@ variable "cluster_admins" {
 }
 
 variable "cluster_admins_group_object_id" {
-  description = "Existing Entra ID group object ID."
+  description = "The object ID of an existing Entra ID group to grant cluster admin. If null, the module creates the group."
   type        = string
   default     = null
 }
 
 variable "cluster_linux_profile_ssh_key" {
-  description = "SSH public key to access cluster nodes"
+  description = "The SSH public key used to access the cluster nodes. A key is generated when null."
   type        = string
   default     = null
 }
@@ -354,7 +355,7 @@ variable "node_os_upgrade_channel" {
 }
 
 variable "custom_ca_trust_certificates_base64" {
-  description = "Configure a custom Certificate Authority (CA) for the Cluster"
+  description = "The base64-encoded CA certificates to trust on the cluster nodes"
   type        = list(string)
   default     = null
 }
@@ -404,7 +405,7 @@ variable "vnet_integration_enabled" {
 }
 
 variable "azure_policy_enabled" {
-  description = "Flag to enable or disable Azure policy"
+  description = "Enable the Azure Policy add-on for the cluster"
   type        = bool
   default     = false
 }
@@ -436,7 +437,7 @@ variable "grafana_sp" {
 ####################
 
 variable "create_custom_role_assignment" {
-  description = "Set to true to create the custom role assignments."
+  description = "Create the Velero role assignments. The custom roles must already exist in Azure."
   type        = bool
   default     = true
 }

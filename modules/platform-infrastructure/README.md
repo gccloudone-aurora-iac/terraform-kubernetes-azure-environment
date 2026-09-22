@@ -38,19 +38,19 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_azure_resource_attributes"></a> [azure\_resource\_attributes](#input\_azure\_resource\_attributes) | Attributes used to describe Azure resources | <pre>object({<br/>    department_code = string<br/>    owner           = string<br/>    project         = string<br/>    environment     = string<br/>    location        = optional(string, "Canada Central")<br/>    instance        = number<br/>  })</pre> | n/a | yes |
-| <a name="input_bill_of_landing_managed_identity_id"></a> [bill\_of\_landing\_managed\_identity\_id](#input\_bill\_of\_landing\_managed\_identity\_id) | The members to configure on the Grafana SSO service principal | `string` | `null` | no |
+| <a name="input_azure_resource_attributes"></a> [azure\_resource\_attributes](#input\_azure\_resource\_attributes) | The attributes used to name and tag the Azure resources | <pre>object({<br/>    department_code = string<br/>    owner           = string<br/>    project         = string<br/>    environment     = string<br/>    location        = optional(string, "Canada Central")<br/>    instance        = number<br/>  })</pre> | n/a | yes |
+| <a name="input_bill_of_landing_managed_identity_id"></a> [bill\_of\_landing\_managed\_identity\_id](#input\_bill\_of\_landing\_managed\_identity\_id) | The managed identity the Bill of Landing workload federates with. No role assignment is made when null. | `string` | `null` | no |
 | <a name="input_cluster_identity_object_id"></a> [cluster\_identity\_object\_id](#input\_cluster\_identity\_object\_id) | The principal ID associated with AKS's Managed Service Identity. | `string` | n/a | yes |
 | <a name="input_cluster_node_resource_group_id"></a> [cluster\_node\_resource\_group\_id](#input\_cluster\_node\_resource\_group\_id) | The Azure resource ID of the Resource Group containing the resources for the AKS cluster. | `string` | n/a | yes |
-| <a name="input_create_custom_role_assignment"></a> [create\_custom\_role\_assignment](#input\_create\_custom\_role\_assignment) | Set to true to create the custom role assignments. | `bool` | `true` | no |
+| <a name="input_create_custom_role_assignment"></a> [create\_custom\_role\_assignment](#input\_create\_custom\_role\_assignment) | Create the Velero role assignments. The custom roles must already exist in Azure. | `bool` | `true` | no |
 | <a name="input_grafana_sso_sp"></a> [grafana\_sso\_sp](#input\_grafana\_sso\_sp) | The members to configure on the Grafana SSO service principal | <pre>object({<br/>    members = object({<br/>      viewer = optional(map(string))<br/>      editor = optional(map(string))<br/>      admin  = map(string)<br/>    })<br/>  })</pre> | n/a | yes |
 | <a name="input_ingress_host"></a> [ingress\_host](#input\_ingress\_host) | The host name for ingress to the environment. | `string` | n/a | yes |
 | <a name="input_naming_convention"></a> [naming\_convention](#input\_naming\_convention) | Sets which naming convention to use. Accepted values: oss, gc | `string` | `"oss"` | no |
 | <a name="input_networking_ids"></a> [networking\_ids](#input\_networking\_ids) | The Azure resource IDs for DNS Zones and subnets. | <pre>object({<br/>    dns_zones = object({<br/>      cert_manager = optional(string)<br/>      blob_storage = optional(string)<br/>    })<br/>    subnets = object({<br/>      infrastructure = string<br/>    })<br/>  })</pre> | n/a | yes |
 | <a name="input_oidc_issuer_url"></a> [oidc\_issuer\_url](#input\_oidc\_issuer\_url) | The OIDC issuer URL that is associated with the cluster. | `string` | n/a | yes |
 | <a name="input_service_principal_owners"></a> [service\_principal\_owners](#input\_service\_principal\_owners) | The Azure identities that will be configured as owners of the created Azure service principals. | `list(string)` | `[]` | no |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags attached to Azure resource | `map(string)` | `{}` | no |
-| <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined field that describes the Azure resource. | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags to assign to the Azure resources | `map(string)` | `{}` | no |
+| <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
 
 ## Outputs
 

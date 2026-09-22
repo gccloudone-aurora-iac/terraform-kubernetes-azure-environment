@@ -1,5 +1,5 @@
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -12,7 +12,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -39,7 +39,7 @@ variable "service_principal_owners" {
 }
 
 variable "tags" {
-  description = "Tags attached to Azure resource"
+  description = "The tags to assign to the Azure resources"
   type        = map(string)
   default     = {}
 }
@@ -100,7 +100,7 @@ variable "ingress_host" {
 ##########################
 
 variable "bill_of_landing_managed_identity_id" {
-  description = "The members to configure on the Grafana SSO service principal"
+  description = "The managed identity the Bill of Landing workload federates with. No role assignment is made when null."
   type        = string
   default     = null
 }
@@ -116,7 +116,7 @@ variable "oidc_issuer_url" {
 ####################
 
 variable "create_custom_role_assignment" {
-  description = "Set to true to create the custom role assignments."
+  description = "Create the Velero role assignments. The custom roles must already exist in Azure."
   type        = bool
   default     = true
 }

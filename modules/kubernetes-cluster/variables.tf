@@ -3,7 +3,7 @@
 ######################
 
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -16,7 +16,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -49,7 +49,7 @@ variable "node_resource_group_name" {
 
 variable "tags" {
   type        = map(string)
-  description = "Azure tags to assign to the Azure resources"
+  description = "The tags to assign to the Azure resources"
   default     = {}
 }
 
@@ -144,7 +144,7 @@ variable "dns_prefix" {
 }
 
 variable "dns_prefix_private_cluster" {
-  description = " Specifies the DNS prefix to use with private clusters. Changing this forces a new resource to be created."
+  description = "Specifies the DNS prefix to use with private clusters. Changing this forces a new resource to be created."
   type        = string
   default     = null
 }
@@ -201,7 +201,7 @@ variable "local_account_disabled" {
 #################
 
 variable "custom_ca_trust_certificates_base64" {
-  description = "Configure a custom Certificate Authority (CA) for the Cluster"
+  description = "The base64-encoded CA certificates to trust on the cluster nodes"
   type        = list(string)
   default     = null
 }
@@ -223,7 +223,7 @@ variable "dns_service_ip" {
 
 # CNI
 variable "network_plugin" {
-  description = "AKS network plugin"
+  description = "AKS network plugin. Accepted values: azure, none"
   type        = string
   default     = "azure"
 
@@ -236,7 +236,7 @@ variable "network_plugin" {
 }
 
 variable "network_mode" {
-  description = "AKS network mode"
+  description = "AKS network mode. Accepted values: bridge, transparent, null"
   type        = string
   default     = "transparent"
   nullable    = true
@@ -252,7 +252,7 @@ variable "network_mode" {
 }
 
 variable "network_policy" {
-  description = "AKS network policy"
+  description = "AKS network policy. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -268,7 +268,7 @@ variable "network_policy" {
 }
 
 variable "network_data_plane" {
-  description = "AKS network data plane"
+  description = "AKS network data plane. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -285,7 +285,7 @@ variable "network_data_plane" {
 
 # Outbound Type
 variable "outbound_type" {
-  description = " The outbound (egress) routing method which should be used for this Kubernetes Cluster. Possible values are loadBalancer, userDefinedRouting, managedNATGateway and userAssignedNATGateway."
+  description = "The outbound (egress) routing method which should be used for this Kubernetes Cluster. Possible values are loadBalancer, userDefinedRouting, managedNATGateway and userAssignedNATGateway."
   default     = "userDefinedRouting"
 }
 
@@ -398,7 +398,7 @@ variable "auto_scaler_profile" {
 ##############
 
 variable "azure_policy_enabled" {
-  description = "Flag to enable or disable Azure policy"
+  description = "Enable the Azure Policy add-on for the cluster"
   type        = bool
   default     = false
 }

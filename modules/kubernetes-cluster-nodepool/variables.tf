@@ -13,7 +13,7 @@ variable "kubernetes_cluster_id" {
 }
 
 variable "tags" {
-  description = "A mapping of tags to assign to the resource."
+  description = "The tags to assign to the node pool."
   type        = map(string)
   default     = {}
 }
@@ -67,7 +67,7 @@ variable "os_type" {
 }
 
 variable "availability_zones" {
-  description = " Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located."
+  description = "Specifies a list of Availability Zones in which this Kubernetes Cluster Node Pool should be located."
   type        = list(string)
   default     = null
 }
@@ -123,7 +123,7 @@ variable "node_count" {
 }
 
 variable "enable_auto_scaling" {
-  description = ""
+  description = "Enable the cluster autoscaler for this Node Pool."
   type        = bool
   default     = false
 }

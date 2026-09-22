@@ -1,6 +1,6 @@
 
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -13,7 +13,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -44,7 +44,7 @@ variable "sku_name" {
 }
 
 variable "tags" {
-  description = "Tags to set on the Azure Key Vault"
+  description = "The tags to assign to the Azure resources"
   type        = map(string)
   default     = {}
 }
@@ -70,7 +70,7 @@ variable "soft_delete_retention_days" {
 ##############################
 
 variable "resource_access" {
-  description = "Determines what kind of resources can access secrets."
+  description = "Which Azure platform services may retrieve secrets from the Key Vault."
   type = object({
     enabled_for_deployment          = bool
     enabled_for_template_deployment = bool

@@ -3,7 +3,7 @@
 ######################
 
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -16,7 +16,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -37,7 +37,7 @@ variable "naming_convention" {
 }
 
 variable "tags" {
-  description = "Tags attached to Azure resource"
+  description = "The tags to assign to the Azure resources"
   type        = map(string)
   default     = {}
 }
@@ -47,7 +47,8 @@ variable "tags" {
 ##########################
 
 variable "spn_object_ids" {
-  type = list(string)
+  description = "The object IDs granted access to the created Azure resources. Defaults to the caller's own object ID when empty."
+  type        = list(string)
 }
 
 ######################
@@ -60,7 +61,7 @@ variable "cluster_vnet_id" {
 }
 
 variable "cluster_service_cidr" {
-  description = "The service is used to assign IP addresses to the nodes and pods in the AKS cluster.This range shouldn't be used by any network element on or connected to this virtual network. Service address CIDR must be smaller than /12. You can reuse this range across different AKS clusters."
+  description = "The service is used to assign IP addresses to the nodes and pods in the AKS cluster. This range shouldn't be used by any network element on or connected to this virtual network. Service address CIDR must be smaller than /12. You can reuse this range across different AKS clusters."
   type        = string
   default     = "10.0.0.0/16"
 }
@@ -159,7 +160,7 @@ variable "vnet_integration_enabled" {
 ###########
 
 variable "network_plugin" {
-  description = "AKS network plugin"
+  description = "AKS network plugin. Accepted values: azure, none"
   type        = string
   default     = "azure"
 
@@ -172,7 +173,7 @@ variable "network_plugin" {
 }
 
 variable "network_mode" {
-  description = "AKS network mode"
+  description = "AKS network mode. Accepted values: bridge, transparent, null"
   type        = string
   default     = "transparent"
   nullable    = true
@@ -188,7 +189,7 @@ variable "network_mode" {
 }
 
 variable "network_policy" {
-  description = "AKS network policy"
+  description = "AKS network policy. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -204,7 +205,7 @@ variable "network_policy" {
 }
 
 variable "network_data_plane" {
-  description = "AKS network data plane"
+  description = "AKS network data plane. Accepted values: azure, cilium, null"
   type        = string
   default     = "cilium"
   nullable    = true
@@ -224,7 +225,7 @@ variable "network_data_plane" {
 #################
 
 variable "custom_ca_trust_certificates_base64" {
-  description = "Configure a custom Certificate Authority (CA) for the Cluster"
+  description = "The base64-encoded CA certificates to trust on the cluster nodes"
   type        = list(string)
   default     = null
 }
@@ -376,7 +377,7 @@ variable "networking_ids" {
 }
 
 variable "create_private_dns_zone_role" {
-  description = "Set to true to create the private dns zone role."
+  description = "Grant the cluster identity the Private DNS Zone Contributor role on the AKS private DNS zone."
   type        = bool
   default     = true
 }
@@ -386,7 +387,7 @@ variable "create_private_dns_zone_role" {
 ##############
 
 variable "azure_policy_enabled" {
-  description = "Flag to enable or disable Azure policy"
+  description = "Enable the Azure Policy add-on for the cluster"
   type        = bool
   default     = false
 }

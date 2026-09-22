@@ -1,5 +1,5 @@
 variable "azure_resource_attributes" {
-  description = "Attributes used to describe Azure resources"
+  description = "The attributes used to name and tag the Azure resources"
   type = object({
     department_code = string
     owner           = string
@@ -12,7 +12,7 @@ variable "azure_resource_attributes" {
 }
 
 variable "user_defined" {
-  description = "A user-defined field that describes the Azure resource."
+  description = "A user-defined segment included in the name of every Azure resource."
   type        = string
   nullable    = false
 
@@ -38,7 +38,7 @@ variable "resource_group_name" {
 }
 
 variable "tags" {
-  description = "List of tags to assign to Azure resources"
+  description = "The tags to assign to the Azure resources"
   type        = map(string)
   default     = {}
 }
@@ -48,7 +48,7 @@ variable "tags" {
 ####################
 
 variable "account_replication_type" {
-  description = "Replication type of the storage account"
+  description = "Replication type of the storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS"
   type        = string
   default     = "LRS"
 }
@@ -86,7 +86,7 @@ variable "public_network_access_enabled" {
 }
 
 variable "network_default_action" {
-  description = "Default network action to take"
+  description = "The action to take when no ip_rules or virtual_network_subnet_ids match. Accepted values: Allow, Deny"
   type        = string
   default     = "Deny"
 }
