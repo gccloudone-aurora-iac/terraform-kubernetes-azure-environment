@@ -11,7 +11,7 @@ Examples for this module along with various configurations can be found in the [
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | ~> 3.3.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
@@ -25,7 +25,7 @@ Examples for this module along with various configurations can be found in the [
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git | v2.0.0 |
+| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ./modules/resource-names | n/a |
 | <a name="module_infrastructure"></a> [infrastructure](#module\_infrastructure) | ./modules/infrastructure | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
 | <a name="module_platform_infrastructure"></a> [platform\_infrastructure](#module\_platform\_infrastructure) | ./modules/platform-infrastructure | n/a |

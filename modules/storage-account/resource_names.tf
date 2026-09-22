@@ -1,5 +1,5 @@
 module "azure_resource_names" {
-  source = "git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git?ref=v2.0.0"
+  source = "../resource-names"
 
   naming_convention = var.naming_convention
   user_defined      = var.user_defined
@@ -8,7 +8,7 @@ module "azure_resource_names" {
 }
 
 module "storage_account_name" {
-  source = "git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names-global.git?ref=v2.0.0"
+  source = "../resource-names-global"
 
   naming_convention = var.naming_convention
   user_defined      = var.user_defined

@@ -5,7 +5,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
 ## Providers
@@ -18,8 +18,8 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git | v2.0.0 |
-| <a name="module_storage_account_name"></a> [storage\_account\_name](#module\_storage\_account\_name) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names-global.git | v2.0.0 |
+| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../resource-names | n/a |
+| <a name="module_storage_account_name"></a> [storage\_account\_name](#module\_storage\_account\_name) | ../resource-names-global | n/a |
 
 ## Resources
 

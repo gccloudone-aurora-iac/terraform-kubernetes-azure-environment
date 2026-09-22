@@ -5,7 +5,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
 ## Providers
@@ -20,7 +20,7 @@
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_argo_workflow_sso_sp"></a> [argo\_workflow\_sso\_sp](#module\_argo\_workflow\_sso\_sp) | ../service-principal | n/a |
-| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git | v2.0.0 |
+| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../resource-names | n/a |
 | <a name="module_backup_rg"></a> [backup\_rg](#module\_backup\_rg) | ./modules/backup | n/a |
 | <a name="module_grafana_sso_sp"></a> [grafana\_sso\_sp](#module\_grafana\_sso\_sp) | ../service-principal | n/a |
 | <a name="module_kubecost_sp"></a> [kubecost\_sp](#module\_kubecost\_sp) | ../service-principal | n/a |

@@ -7,6 +7,18 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). R
 cut automatically on merge to `main` from the release label applied to the pull request — see
 [.github/workflows/trigger_release.yml](.github/workflows/trigger_release.yml).
 
+## [v5.1.0] - 2026-09-22
+
+No interface or state change: variables, outputs and module call names are untouched.
+
+### Changed
+
+- Vendored the last two remote modules, `resource-names` and `resource-names-global`, from
+  their `v2.0.0` tags across all 14 call sites. No `git::` module sources remain, so
+  `terraform init` now contacts only the provider registry.
+- Raised `required_version` to `>= 1.9.0, < 2.0.0` everywhere. The naming modules already
+  required 1.9.0, so this documents the existing floor rather than raising it.
+
 ## [v5.0.0] - 2026-09-21
 
 Consolidation release. The module now lives at
@@ -22,6 +34,8 @@ Consolidation release. The module now lives at
 - Velero storage accounts use `LRS` replication instead of `RAGZRS`.
 - Uniform comment style across every `.tf` file, and a doc comment on every `resource`,
   `module` and `data` block.
+- Variable descriptions across every module: filled in empty and copy-pasted ones, moved
+  accepted values out of `validation` blocks into the text, unified the `tags` wording.
 - The `## History` table in [README.md](README.md) has been folded into this file, which is
   now the single release history.
 

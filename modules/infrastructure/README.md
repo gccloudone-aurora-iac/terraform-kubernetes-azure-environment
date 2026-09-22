@@ -5,7 +5,7 @@
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.3.0, < 2.0.0 |
+| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
 ## Providers
@@ -19,7 +19,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git | v2.0.0 |
+| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../resource-names | n/a |
 | <a name="module_cluster"></a> [cluster](#module\_cluster) | ../kubernetes-cluster | n/a |
 | <a name="module_cluster_key_vault"></a> [cluster\_key\_vault](#module\_cluster\_key\_vault) | ../key-vault | n/a |
 | <a name="module_node_pool"></a> [node\_pool](#module\_node\_pool) | ../kubernetes-cluster-nodepool | n/a |
