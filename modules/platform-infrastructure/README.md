@@ -51,6 +51,7 @@
 | <a name="input_service_principal_owners"></a> [service\_principal\_owners](#input\_service\_principal\_owners) | The Azure identities that will be configured as owners of the created Azure service principals. | `list(string)` | `[]` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to assign to the Azure resources | `map(string)` | `{}` | no |
 | <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
+| <a name="input_velero_account_replication_type"></a> [velero\_account\_replication\_type](#input\_velero\_account\_replication\_type) | Replication type of the Velero backup storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS | `string` | `"LRS"` | no |
 
 ## Outputs
 

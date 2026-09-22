@@ -17,7 +17,7 @@
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | git::https://github.com/gccloudone-aurora-iac/terraform-aurora-azure-resource-names.git | v2.0.0 |
+| <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../../../resource-names | n/a |
 | <a name="module_velero_storage_account"></a> [velero\_storage\_account](#module\_velero\_storage\_account) | ../../../storage-account | n/a |
 
 ## Resources
@@ -38,16 +38,17 @@
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_azure_resource_attributes"></a> [azure\_resource\_attributes](#input\_azure\_resource\_attributes) | Attributes used to describe Azure resources | <pre>object({<br/>    department_code = string<br/>    owner           = string<br/>    project         = string<br/>    environment     = string<br/>    location        = optional(string, "Canada Central")<br/>    instance        = number<br/>  })</pre> | n/a | yes |
+| <a name="input_azure_resource_attributes"></a> [azure\_resource\_attributes](#input\_azure\_resource\_attributes) | The attributes used to name and tag the Azure resources | <pre>object({<br/>    department_code = string<br/>    owner           = string<br/>    project         = string<br/>    environment     = string<br/>    location        = optional(string, "Canada Central")<br/>    instance        = number<br/>  })</pre> | n/a | yes |
 | <a name="input_blob_storage_private_dns_zone_id"></a> [blob\_storage\_private\_dns\_zone\_id](#input\_blob\_storage\_private\_dns\_zone\_id) | The Azure resource ID of the blob storage Private DNS Zone that will be used to resolve private endpoints. | `string` | n/a | yes |
 | <a name="input_cluster_identity_object_id"></a> [cluster\_identity\_object\_id](#input\_cluster\_identity\_object\_id) | The principal ID associated with AKS's Managed Service Identity. | `string` | n/a | yes |
 | <a name="input_cluster_node_resource_group_id"></a> [cluster\_node\_resource\_group\_id](#input\_cluster\_node\_resource\_group\_id) | The Azure resource ID of the Resource Group containing the resources for the AKS cluster. | `string` | n/a | yes |
-| <a name="input_create_custom_role_assignment"></a> [create\_custom\_role\_assignment](#input\_create\_custom\_role\_assignment) | Set to true to create the custom role assignments. | `bool` | `true` | no |
+| <a name="input_create_custom_role_assignment"></a> [create\_custom\_role\_assignment](#input\_create\_custom\_role\_assignment) | Create the Velero role assignments. The custom roles must already exist in Azure. | `bool` | `true` | no |
 | <a name="input_infrastructure_subnet_id"></a> [infrastructure\_subnet\_id](#input\_infrastructure\_subnet\_id) | The Azure resource ID of the infrastructure subnet where private endpoints will exist. | `string` | n/a | yes |
 | <a name="input_naming_convention"></a> [naming\_convention](#input\_naming\_convention) | Sets which naming convention to use. Accepted values: oss, gc | `string` | `"oss"` | no |
 | <a name="input_oidc_issuer_url"></a> [oidc\_issuer\_url](#input\_oidc\_issuer\_url) | The OIDC issuer URL that is associated with the cluster. | `string` | n/a | yes |
-| <a name="input_tags"></a> [tags](#input\_tags) | Tags attached to Azure resource | `map(string)` | `{}` | no |
-| <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined field that describes the Azure resource. | `string` | n/a | yes |
+| <a name="input_tags"></a> [tags](#input\_tags) | The tags to assign to the Azure resources | `map(string)` | `{}` | no |
+| <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
+| <a name="input_velero_account_replication_type"></a> [velero\_account\_replication\_type](#input\_velero\_account\_replication\_type) | Replication type of the Velero backup storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS | `string` | `"LRS"` | no |
 
 ## Outputs
 
