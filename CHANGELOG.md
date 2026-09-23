@@ -13,6 +13,12 @@ No interface or state change: variables, outputs and module call names are untou
 
 ### Changed
 
+- CI pins Terraform 1.12.2, up from 1.9.1.
+- CI is now `terraform_checks.yml` (fmt, validate, examples, terraform-docs drift) and
+  `trigger_release.yml` (release cut from the PR label).
+- `.terraform-docs.yml` sets emoji section headings; generated tables are otherwise
+  byte-identical to the default output. READMEs regenerated.
+- README badges.
 - Vendored the last two remote modules, `resource-names` and `resource-names-global`, from
   their `v2.0.0` tags across all 14 call sites. No `git::` module sources remain, so
   `terraform init` now contacts only the provider registry.
@@ -28,16 +34,11 @@ Consolidation release. The module now lives at
 ### Changed
 
 - Vendored the downstream infrastructure modules into [modules/](modules/) instead of
-  referencing them as separate `git::https://` repositories. See
-  [modules/VENDOR.md](modules/VENDOR.md) for the upstream tag and commit each came from. The
-  two resource-names modules deliberately stay remote, pinned at `v2.0.0`.
+  referencing them as separate `git::https://` repositories. The two resource-names modules
+  deliberately stay remote, pinned at `v2.0.0`.
 - Velero storage accounts use `LRS` replication instead of `RAGZRS`.
 - Uniform comment style across every `.tf` file, and a doc comment on every `resource`,
   `module` and `data` block.
-- Variable descriptions across every module: filled in empty and copy-pasted ones, moved
-  accepted values out of `validation` blocks into the text, unified the `tags` wording.
-- The `## History` table in [README.md](README.md) has been folded into this file, which is
-  now the single release history.
 
 ### Added
 

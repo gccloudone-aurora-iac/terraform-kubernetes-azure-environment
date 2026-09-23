@@ -1,30 +1,30 @@
 # resource-names-global
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_random"></a> [random](#provider\_random) | n/a |
 
-## Modules
+## 🧩 Modules
 
 No modules.
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
 | [random_id.this](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/id) | resource |
 | [random_string.random](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/string) | resource |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -32,7 +32,7 @@ No modules.
 | <a name="input_naming_convention"></a> [naming\_convention](#input\_naming\_convention) | Sets which naming convention to use. Accepted values: oss, gc | `string` | `"oss"` | no |
 | <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|

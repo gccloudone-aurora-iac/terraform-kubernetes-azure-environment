@@ -1,13 +1,17 @@
 # terraform-kubernetes-azure-environment
 
+[![Terraform](https://img.shields.io/badge/terraform-%235835CC.svg?style=for-the-badge&logo=terraform&logoColor=white)](https://terraform.io/)
+[![Azure](https://img.shields.io/badge/azure-%230072C6.svg?style=for-the-badge&logo=microsoftazure&logoColor=white)](https://azure.microsoft.com/)
+[![Kubernetes](https://img.shields.io/badge/kubernetes-%23326CE5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
+
 This module deploys a PBMM compliant Azure Kubernetes Service environment in Azure.
 
-## Usage
+## 📦 Usage
 
 Examples for this module along with various configurations can be found in the [examples/](examples/) folder.
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
@@ -15,13 +19,13 @@ Examples for this module along with various configurations can be found in the [
 | <a name="requirement_azuread"></a> [azuread](#requirement\_azuread) | ~> 3.3.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | ~> 3.3.0 |
 
-## Modules
+## 🧩 Modules
 
 | Name | Source | Version |
 |------|--------|---------|
@@ -30,13 +34,13 @@ Examples for this module along with various configurations can be found in the [
 | <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
 | <a name="module_platform_infrastructure"></a> [platform\_infrastructure](#module\_platform\_infrastructure) | ./modules/platform-infrastructure | n/a |
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
 | [azuread_group.cluster_admins](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/resources/group) | resource |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -79,7 +83,7 @@ Examples for this module along with various configurations can be found in the [
 | <a name="input_vnet_integration_enabled"></a> [vnet\_integration\_enabled](#input\_vnet\_integration\_enabled) | Enable or disable Virtual Network Integration. | `bool` | `false` | no |
 | <a name="input_vnet_peers"></a> [vnet\_peers](#input\_vnet\_peers) | A list of remote virtual network resource IDs to use as virtual network peerings. | `list(string)` | `[]` | no |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|
@@ -119,6 +123,6 @@ Examples for this module along with various configurations can be found in the [
 | <a name="output_vnet_subnets"></a> [vnet\_subnets](#output\_vnet\_subnets) | The ids of subnets created inside the newly created virtual network |
 <!-- END_TF_DOCS -->
 
-## History
+## 📜 History
 
 See [CHANGELOG.md](CHANGELOG.md) for the full release history.

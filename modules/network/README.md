@@ -1,20 +1,20 @@
 # network
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.49.0 |
 
-## Modules
+## 🧩 Modules
 
 | Name | Source | Version |
 |------|--------|---------|
@@ -22,7 +22,7 @@
 | <a name="module_route_server"></a> [route\_server](#module\_route\_server) | ../route-server | n/a |
 | <a name="module_virtual_network"></a> [virtual\_network](#module\_virtual\_network) | ../virtual-network | n/a |
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
@@ -30,7 +30,7 @@
 | [azurerm_resource_group.network](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/resource_group) | resource |
 | [azurerm_route_table.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_table) | resource |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -47,7 +47,7 @@
 | <a name="input_vnet_address_space"></a> [vnet\_address\_space](#input\_vnet\_address\_space) | The address space for the virtual network. | `list(string)` | n/a | yes |
 | <a name="input_vnet_peers"></a> [vnet\_peers](#input\_vnet\_peers) | A list of remote virtual network resource IDs to use as virtual network peerings. | `list(string)` | `[]` | no |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|

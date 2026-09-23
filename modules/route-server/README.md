@@ -1,26 +1,26 @@
 # route-server
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.49.0 |
 
-## Modules
+## 🧩 Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../resource-names | n/a |
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
@@ -29,7 +29,7 @@
 | [azurerm_route_server_bgp_connection.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/route_server_bgp_connection) | resource |
 | [azurerm_virtual_hub.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/virtual_hub) | data source |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -43,7 +43,7 @@
 | <a name="input_tags"></a> [tags](#input\_tags) | The tags to assign to the route server and its public IP | `map(string)` | `{}` | no |
 | <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|

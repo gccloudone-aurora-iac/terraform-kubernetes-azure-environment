@@ -1,7 +1,7 @@
 # kubernetes-cluster
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
@@ -9,7 +9,7 @@
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.1 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
@@ -17,13 +17,13 @@
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0.1 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | n/a |
 
-## Modules
+## 🧩 Modules
 
 | Name | Source | Version |
 |------|--------|---------|
 | <a name="module_azure_resource_names"></a> [azure\_resource\_names](#module\_azure\_resource\_names) | ../resource-names | n/a |
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
@@ -34,7 +34,7 @@
 | [random_pet.windows_username](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/pet) | resource |
 | [tls_private_key.ssh](https://registry.terraform.io/providers/hashicorp/tls/latest/docs/resources/private_key) | resource |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -78,7 +78,7 @@
 | <a name="input_user_assigned_identity_ids"></a> [user\_assigned\_identity\_ids](#input\_user\_assigned\_identity\_ids) | User Assigned Identity IDs for use by the cluster control plane | `list(string)` | n/a | yes |
 | <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|

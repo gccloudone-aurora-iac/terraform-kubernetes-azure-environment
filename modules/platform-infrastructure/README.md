@@ -1,21 +1,21 @@
 # platform-infrastructure
 
 <!-- BEGIN_TF_DOCS -->
-## Requirements
+## 📋 Requirements
 
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
-## Providers
+## 🔌 Providers
 
 | Name | Version |
 |------|---------|
 | <a name="provider_azuread"></a> [azuread](#provider\_azuread) | n/a |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.49.0 |
 
-## Modules
+## 🧩 Modules
 
 | Name | Source | Version |
 |------|--------|---------|
@@ -26,7 +26,7 @@
 | <a name="module_kubecost_sp"></a> [kubecost\_sp](#module\_kubecost\_sp) | ../service-principal | n/a |
 | <a name="module_platform_rg"></a> [platform\_rg](#module\_platform\_rg) | ./modules/platform | n/a |
 
-## Resources
+## 🗂️ Resources
 
 | Name | Type |
 |------|------|
@@ -34,7 +34,7 @@
 | [azuread_application_published_app_ids.well_known](https://registry.terraform.io/providers/hashicorp/azuread/latest/docs/data-sources/application_published_app_ids) | data source |
 | [azurerm_subscription.current](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/data-sources/subscription) | data source |
 
-## Inputs
+## 📥 Inputs
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
@@ -53,7 +53,7 @@
 | <a name="input_user_defined"></a> [user\_defined](#input\_user\_defined) | A user-defined segment included in the name of every Azure resource. | `string` | n/a | yes |
 | <a name="input_velero_account_replication_type"></a> [velero\_account\_replication\_type](#input\_velero\_account\_replication\_type) | Replication type of the Velero backup storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS | `string` | `"LRS"` | no |
 
-## Outputs
+## 📤 Outputs
 
 | Name | Description |
 |------|-------------|
