@@ -46,6 +46,7 @@ module "infrastructure" {
   cluster_support_plan = var.cluster_support_plan
   cluster_diag_setting = var.cluster_diag_setting
   kubernetes_version   = var.kubernetes_version
+  gateway_api_enabled  = var.gateway_api_enabled
   node_os_upgrade = {
     channel            = var.node_os_upgrade_channel
     maintenance_window = local.maintenance_window_node_os

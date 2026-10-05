@@ -6,6 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | ~> 2.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 | <a name="requirement_random"></a> [random](#requirement\_random) | >= 3.0.1 |
 
@@ -13,6 +14,7 @@
 
 | Name | Version |
 |------|---------|
+| <a name="provider_azapi"></a> [azapi](#provider\_azapi) | ~> 2.0 |
 | <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | ~> 4.49.0 |
 | <a name="provider_random"></a> [random](#provider\_random) | >= 3.0.1 |
 | <a name="provider_tls"></a> [tls](#provider\_tls) | n/a |
@@ -27,6 +29,7 @@
 
 | Name | Type |
 |------|------|
+| [azapi_update_resource.gateway_api](https://registry.terraform.io/providers/Azure/azapi/latest/docs/resources/update_resource) | resource |
 | [azurerm_kubernetes_cluster.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/kubernetes_cluster) | resource |
 | [azurerm_monitor_diagnostic_setting.this](https://registry.terraform.io/providers/hashicorp/azurerm/latest/docs/resources/monitor_diagnostic_setting) | resource |
 | [random_password.windows_password](https://registry.terraform.io/providers/hashicorp/random/latest/docs/resources/password) | resource |
@@ -51,6 +54,7 @@
 | <a name="input_dns_prefix"></a> [dns\_prefix](#input\_dns\_prefix) | DNS prefix specified when creating the managed cluster. Possible values must begin and end with a letter or number, contain only letters, numbers, and hyphens and be between 1 and 54 characters in length. Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_dns_prefix_private_cluster"></a> [dns\_prefix\_private\_cluster](#input\_dns\_prefix\_private\_cluster) | Specifies the DNS prefix to use with private clusters. Changing this forces a new resource to be created. | `string` | `null` | no |
 | <a name="input_dns_service_ip"></a> [dns\_service\_ip](#input\_dns\_service\_ip) | IP address within the Kubernetes service address range that will be used by cluster service discovery (kube-dns). Changing this forces a new resource to be created. | `string` | `"10.0.0.10"` | no |
+| <a name="input_gateway_api_enabled"></a> [gateway\_api\_enabled](#input\_gateway\_api\_enabled) | Install AKS-managed Gateway API CRDs on this cluster. | `bool` | `false` | no |
 | <a name="input_kubelet_identity"></a> [kubelet\_identity](#input\_kubelet\_identity) | The user-defined Managed Identity assigned to the Kubelets | <pre>object({<br/>    client_id                 = string<br/>    object_id                 = string<br/>    user_assigned_identity_id = string<br/>  })</pre> | <pre>{<br/>  "client_id": null,<br/>  "object_id": null,<br/>  "user_assigned_identity_id": null<br/>}</pre> | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | Version of Kubernetes specified when creating the AKS managed cluster | `string` | `"1.17.16"` | no |
 | <a name="input_linux_profile_public_ssh_key"></a> [linux\_profile\_public\_ssh\_key](#input\_linux\_profile\_public\_ssh\_key) | The SSH public key used to connect to the cluster's Linux nodes. Changing this will update the key on all node pools. If the value is null, this module will autogenerate an SSH key to use. | `string` | `null` | no |

@@ -63,6 +63,12 @@ variable "kubernetes_version" {
   default     = "1.17.16"
 }
 
+variable "gateway_api_enabled" {
+  description = "Install AKS-managed Gateway API CRDs on this cluster."
+  type        = bool
+  default     = false
+}
+
 variable "automatic_channel_upgrade" {
   description = "Automatically perform upgrades of the Kubernetes cluster (none, patch, rapid, stable)"
   type        = string

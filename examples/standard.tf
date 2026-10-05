@@ -233,6 +233,7 @@ module "aurora" {
   ###########
 
   kubernetes_version      = "1.35.1"
+  gateway_api_enabled     = true
   node_os_upgrade_channel = "None"
   cluster_sku_tier        = "Premium"
   cluster_support_plan    = "KubernetesOfficial"

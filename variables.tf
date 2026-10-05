@@ -308,6 +308,12 @@ variable "kubernetes_version" {
   type        = string
 }
 
+variable "gateway_api_enabled" {
+  description = "Install AKS-managed Gateway API CRDs. Enable for Aurora workload clusters; leave disabled for the central ingress cluster."
+  type        = bool
+  default     = false
+}
+
 variable "cluster_sku_tier" {
   description = "The SKU tier of the AKS cluster, which sets its uptime SLA. Accepted values: Free, Standard, Premium"
   type        = string

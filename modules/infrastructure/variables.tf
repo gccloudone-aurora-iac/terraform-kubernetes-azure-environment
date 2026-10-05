@@ -117,6 +117,12 @@ variable "kubernetes_version" {
   type        = string
 }
 
+variable "gateway_api_enabled" {
+  description = "Install AKS-managed Gateway API CRDs on this cluster."
+  type        = bool
+  default     = false
+}
+
 variable "node_os_upgrade" {
   description = "The maintenance window for the node OS upgrades. Refer to https://learn.microsoft.com/en-us/azure/aks/planned-maintenance for more information."
   type = object({
