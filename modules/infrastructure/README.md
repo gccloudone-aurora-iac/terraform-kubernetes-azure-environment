@@ -6,6 +6,7 @@
 | Name | Version |
 |------|---------|
 | <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.9.0, < 2.0.0 |
+| <a name="requirement_azapi"></a> [azapi](#requirement\_azapi) | ~> 2.0 |
 | <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | ~> 4.49.0 |
 
 ## 🔌 Providers
@@ -59,6 +60,7 @@
 | <a name="input_cluster_vnet_id"></a> [cluster\_vnet\_id](#input\_cluster\_vnet\_id) | The Azure resource ID of the virtual network used for the AKS. | `string` | n/a | yes |
 | <a name="input_create_private_dns_zone_role"></a> [create\_private\_dns\_zone\_role](#input\_create\_private\_dns\_zone\_role) | Grant the cluster identity the Private DNS Zone Contributor role on the AKS private DNS zone. | `bool` | `true` | no |
 | <a name="input_custom_ca_trust_certificates_base64"></a> [custom\_ca\_trust\_certificates\_base64](#input\_custom\_ca\_trust\_certificates\_base64) | The base64-encoded CA certificates to trust on the cluster nodes | `list(string)` | `null` | no |
+| <a name="input_gateway_api_enabled"></a> [gateway\_api\_enabled](#input\_gateway\_api\_enabled) | Opt in to AKS-managed Gateway API CRDs. Keep false when platform charts manage the CRDs; AKS support requires a supported add-on or extension. | `bool` | `false` | no |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The Kubernetes version used by the control plane & the default version for the agent nodes. | `string` | n/a | yes |
 | <a name="input_naming_convention"></a> [naming\_convention](#input\_naming\_convention) | Sets which naming convention to use. Accepted values: oss, gc | `string` | `"oss"` | no |
 | <a name="input_network_data_plane"></a> [network\_data\_plane](#input\_network\_data\_plane) | AKS network data plane. Accepted values: azure, cilium, null | `string` | `"cilium"` | no |

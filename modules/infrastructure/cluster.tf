@@ -96,6 +96,7 @@ module "cluster" {
   support_plan        = var.cluster_support_plan
 
   kubernetes_version         = var.kubernetes_version
+  gateway_api_enabled        = var.gateway_api_enabled
   node_os_channel_upgrade    = var.node_os_upgrade.channel
   maintenance_window_node_os = var.node_os_upgrade.maintenance_window
   diag_setting               = var.cluster_diag_setting
