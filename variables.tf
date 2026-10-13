@@ -309,7 +309,7 @@ variable "kubernetes_version" {
 }
 
 variable "gateway_api_enabled" {
-  description = "Install AKS-managed Gateway API CRDs. Enable for Aurora workload clusters; leave disabled for the central ingress cluster."
+  description = "Opt in to AKS-managed Gateway API CRDs. Keep false when platform charts manage the CRDs; AKS support requires a supported add-on or extension."
   type        = bool
   default     = false
 }

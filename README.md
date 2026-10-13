@@ -10,10 +10,11 @@ This module deploys a PBMM compliant Azure Kubernetes Service environment in Azu
 
 Examples for this module along with various configurations can be found in the [examples/](examples/) folder.
 
-Aurora AKS workload clusters should set `gateway_api_enabled = true` to install
-the AKS-managed standard Gateway API CRDs. The default is `false` so the central
-NGINX ingress cluster is unaffected. The Gateway controller and platform-owned
-Gateway are configured by the Aurora platform charts; see their
+`gateway_api_enabled` opts into AKS-managed standard Gateway API CRDs and defaults
+to `false`. Keep it disabled on Aurora clusters where the platform charts manage
+the CRDs with Istio. Enable it only when the cluster intentionally uses AKS
+management with a supported Gateway API add-on or extension. The platform Gateway
+and routes are configured by the Aurora charts; see the
 [Gateway API guide](https://github.com/gccloudone-aurora/aurora-platform-charts/blob/main/docs/gateway-api.md).
 
 <!-- BEGIN_TF_DOCS -->
@@ -66,7 +67,7 @@ Gateway are configured by the Aurora platform charts; see their
 | <a name="input_ddos_protection_plan_id"></a> [ddos\_protection\_plan\_id](#input\_ddos\_protection\_plan\_id) | The DDoS protection plan resource ID | `string` | `null` | no |
 | <a name="input_dns_servers"></a> [dns\_servers](#input\_dns\_servers) | The DNS servers to be used by the virtual network. Set to [] to use Azure DNS. | `list(string)` | <pre>[<br/>  "172.20.48.4",<br/>  "172.20.48.5"<br/>]</pre> | no |
 | <a name="input_extra_route_table_rules"></a> [extra\_route\_table\_rules](#input\_extra\_route\_table\_rules) | The environment specific security rules to add to the standard route table. | `list(string)` | `[]` | no |
-| <a name="input_gateway_api_enabled"></a> [gateway\_api\_enabled](#input\_gateway\_api\_enabled) | Install AKS-managed Gateway API CRDs. Enable for Aurora workload clusters; leave disabled for the central ingress cluster. | `bool` | `false` | no |
+| <a name="input_gateway_api_enabled"></a> [gateway\_api\_enabled](#input\_gateway\_api\_enabled) | Opt in to AKS-managed Gateway API CRDs. Keep false when platform charts manage the CRDs; AKS support requires a supported add-on or extension. | `bool` | `false` | no |
 | <a name="input_grafana_sp"></a> [grafana\_sp](#input\_grafana\_sp) | Settings for the Grafana SSO service principal. | <pre>object({<br/>    members = object({<br/>      viewer = optional(map(string), {})<br/>      editor = optional(map(string), {})<br/>      admin  = map(string)<br/>    })<br/>  })</pre> | <pre>{<br/>  "members": {<br/>    "admin": {},<br/>    "editor": {},<br/>    "viewer": {}<br/>  }<br/>}</pre> | no |
 | <a name="input_ingress_host"></a> [ingress\_host](#input\_ingress\_host) | The host name for ingress to the environment. | `string` | n/a | yes |
 | <a name="input_kubernetes_version"></a> [kubernetes\_version](#input\_kubernetes\_version) | The Kubernetes version used by the control plane & the default version for the agent nodes. | `string` | n/a | yes |
