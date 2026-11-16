@@ -308,6 +308,12 @@ variable "kubernetes_version" {
   type        = string
 }
 
+variable "gateway_api_enabled" {
+  description = "Opt in to AKS-managed Gateway API CRDs. Keep false when platform charts manage the CRDs; AKS support requires a supported add-on or extension."
+  type        = bool
+  default     = false
+}
+
 variable "cluster_sku_tier" {
   description = "The SKU tier of the AKS cluster, which sets its uptime SLA. Accepted values: Free, Standard, Premium"
   type        = string

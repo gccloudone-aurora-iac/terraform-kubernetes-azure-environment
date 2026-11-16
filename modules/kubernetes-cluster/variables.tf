@@ -63,6 +63,12 @@ variable "kubernetes_version" {
   default     = "1.17.16"
 }
 
+variable "gateway_api_enabled" {
+  description = "Opt in to AKS-managed Gateway API CRDs. Keep false when platform charts manage the CRDs; AKS support requires a supported add-on or extension."
+  type        = bool
+  default     = false
+}
+
 variable "automatic_channel_upgrade" {
   description = "Automatically perform upgrades of the Kubernetes cluster (none, patch, rapid, stable)"
   type        = string
