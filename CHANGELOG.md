@@ -7,7 +7,7 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). R
 cut automatically on merge to `main` from the release label applied to the pull request — see
 [.github/workflows/trigger_release.yml](.github/workflows/trigger_release.yml).
 
-## [v5.2.0] - 2026-11-10
+## [v5.2.0] - 2026-11-16
 
 ### Added
 
@@ -15,6 +15,18 @@ cut automatically on merge to `main` from the release label applied to the pull 
   leave it disabled when platform charts manage the CRDs. A supported AKS add-on or
   extension is required, and the Gateway API controller is installed separately.
 - The Azure AzAPI provider (`~> 2.0`) is required to configure the AKS Gateway API
+
+## [v5.1.2] - 2026-11-16
+### Added
+- PIM configuration for the cluster-admins Entra group (`pim.tf`): activation rules, eligible
+  and active assignment rules, notification rules, and an eligibility schedule for each entry
+  in `cluster_admins`.
+- `pim_approvers` and `pim_notification_recipients` variables.
+- `azuread_group_member.cluster_admins_spns` adds each `spn_object_ids` entry as a group member,
+  because service principals cannot complete MFA to activate through PIM.
+### Changed
+- `azuread_group.cluster_admins` no longer sets `members` and ignores changes to it. Users in
+  `cluster_admins` are now made eligible through PIM instead of being direct members.
 
 ## [v5.1.0] - 2026-09-22
 
