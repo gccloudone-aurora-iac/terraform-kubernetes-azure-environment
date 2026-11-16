@@ -9,4 +9,10 @@ locals {
   }
 
   tags = merge(var.tags, { ModuleName = "terraform-kubernetes-azure-environment" }, { ModuleVersion = "v5.0.0" })
+
+  cluster_admins_group_id = (
+    var.cluster_admins_group_object_id != null
+    ? var.cluster_admins_group_object_id
+    : azuread_group.cluster_admins[0].object_id
+  )
 }

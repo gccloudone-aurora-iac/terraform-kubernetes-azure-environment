@@ -432,6 +432,18 @@ variable "grafana_sp" {
   }
 }
 
+variable "pim_approvers" {
+  description = "Object ID of the Entra group whose members approve PIM activations for the cluster admins group."
+  default     = null
+  type        = string
+}
+
+variable "pim_notification_recipients" {
+  description = "Extra email addresses notified on PIM activations and active assignments."
+  type        = list(string)
+  default     = []
+}
+
 variable "velero_account_replication_type" {
   description = "Replication type of the Velero backup storage account. Accepted values: LRS, GRS, RAGRS, ZRS, GZRS, RAGZRS"
   type        = string
