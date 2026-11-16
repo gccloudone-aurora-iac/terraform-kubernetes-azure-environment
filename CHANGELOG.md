@@ -7,6 +7,15 @@ project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html). R
 cut automatically on merge to `main` from the release label applied to the pull request — see
 [.github/workflows/trigger_release.yml](.github/workflows/trigger_release.yml).
 
+## [v5.2.0] - 2026-11-10
+
+### Added
+
+- `gateway_api_enabled` opts in to AKS-managed Gateway API CRDs. It defaults to `false`;
+  leave it disabled when platform charts manage the CRDs. A supported AKS add-on or
+  extension is required, and the Gateway API controller is installed separately.
+- The Azure AzAPI provider (`~> 2.0`) is required to configure the AKS Gateway API
+
 ## [v5.1.0] - 2026-09-22
 
 No interface or state change: variables, outputs and module call names are untouched.
